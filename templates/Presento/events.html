@@ -1,0 +1,124 @@
+{% extends 'Presento/base.html' %}
+{% load static %}
+{% block title %}
+    Tadbirlar
+{% endblock %}
+{% block header %}
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center">
+            <h1 class="logo me-auto"><a href="{% url 'index' %}">
+                <img src="{% static 'icons/icon.ico' %}" alt="Logo">
+                Karmana bibliografiya</a></h1>
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="nav-link scrollto " href="{% url 'index' %}">Asosiy oyna</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'index' %}">Kutubxona haqida</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'index' %}">Xizmatlar</a></li>
+                    <li><a class="nav-link scrollto " href="{% url 'index' %}">Kitoblar</a></li>
+                    <li><a class="nav-link scrollto active" href="{% url 'events' %}">Tadbirlar</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'index' %}">Aloqa</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+            <a href="{% url 'index' %}" class="get-started-btn scrollto">Boshlash</a>
+        </div>
+    </header>
+{% endblock %}
+{% block main %}
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <ol>
+                    <li><a href="{% url 'index' %}">Asosiy oyna</a></li>
+                    <li>Tadbirlar</li>
+                </ol>
+                <h2>Tadbirlar</h2>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+
+        <!-- ======= Blog Section ======= -->
+        <section id="blog" class="blog">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row">
+
+                    <div class="col-lg-8 entries">
+                        <div id="article">
+                            <!-- Article list -->
+                        </div>
+                        <div class="blog-pagination">
+                            <ul class="justify-content-center" id="pagination">
+                            </ul>
+                        </div>
+                    </div><!-- End blog entries list -->
+
+                    <div class="col-lg-4">
+
+                        <div class="sidebar">
+
+                            <h3 class="sidebar-title">Qidiruv</h3>
+                            <div class="sidebar-item search-form">
+                                <form action="#">
+                                    <input type="text" id="event-search">
+                                    <button type="submit"><i class="bi bi-search" id="event-search-button"></i></button>
+                                </form>
+                            </div><!-- End sidebar search formn-->
+
+                            <h3 class="sidebar-title">Kategoriyalar</h3>
+                            <div class="sidebar-item categories">
+                                <ul id="categories"></ul>
+                            </div><!-- End sidebar categories-->
+
+                            <h3 class="sidebar-title">Recent Posts</h3>
+                            <div class="sidebar-item recent-posts">
+                                <div class="post-item clearfix">
+                                    <img src="{% static 'assets/img/blog/blog-recent-1.jpg' %}" alt="">
+                                    <h4><a href="blog-single.html">Nihil blanditiis at in nihil autem</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                                <div class="post-item clearfix">
+                                    <img src="{% static 'assets/img/blog/blog-recent-2.jpg' %}" alt="">
+                                    <h4><a href="blog-single.html">Quidem autem et impedit</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                                <div class="post-item clearfix">
+                                    <img src="{% static 'assets/img/blog/blog-recent-3.jpg' %}" alt="">
+                                    <h4><a href="blog-single.html">Id quia et et ut maxime similique occaecati ut</a>
+                                    </h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                                <div class="post-item clearfix">
+                                    <img src="{% static 'assets/img/blog/blog-recent-4.jpg' %}" alt="">
+                                    <h4><a href="blog-single.html">Laborum corporis quo dara net para</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                                <div class="post-item clearfix">
+                                    <img src="{% static 'assets/img/blog/blog-recent-5.jpg' %}" alt="">
+                                    <h4><a href="blog-single.html">Et dolores corrupti quae illo quod dolor</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                            </div><!-- End sidebar recent posts-->
+
+                        </div><!-- End sidebar -->
+
+                    </div><!-- End blog sidebar -->
+
+                </div>
+
+            </div>
+        </section><!-- End Blog Section -->
+
+    </main><!-- End #main -->
+{% endblock %}
+{% block js %}
+    <script src="{% static 'js/events.js' %}"></script>
+    {{ block.super }}
+{% endblock %}
