@@ -25,4 +25,5 @@ urlpatterns = [
                   path('', include('apps.urls'))
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+handler500 = 'apps.views.error_500'
 handler404 = 'apps.views.error_404'
