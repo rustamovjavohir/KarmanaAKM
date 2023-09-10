@@ -152,6 +152,9 @@ AUTH_USER_MODEL = 'auth_user.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# --------------------------------------------------------CASHING-------------------------------------------------------
+CACHE_TTL = 60 * 15  # 15 minutes
+
 # -------------------------------------------------JAZMIN SETTINGS------------------------------------------------------
 
 JAZZMIN_SETTINGS = {
