@@ -61,17 +61,17 @@
                                     </div>
 
                                     <h2 class="entry-title">
-                                        <a href="blog-single.html">{{ writer.name }}</a>
+                                        <a href="{% url 'writers-detail' writer.slug %}">{{ writer.name }}</a>
                                     </h2>
 
                                     <div class="entry-meta">
                                         <ul>
-                                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                                    href="blog-single.html">{{ writer.created_by }}</a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                    href="blog-single.html">
+                                            <li class="d-flex align-items-center"><i class="bi bi-person"></i>
+                                                {{ writer.created_by }}
+                                            </li>
+                                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i>
                                                 <time datetime={{ writer.created_at }}>{{ writer.created_at }}</time>
-                                            </a></li>
+                                            </li>
                                         </ul>
                                     </div>
 
