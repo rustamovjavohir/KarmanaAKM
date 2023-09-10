@@ -1,7 +1,7 @@
 {% extends 'Presento/base.html' %}
 {% load static %}
 {% block title %}
-    Tadbirlar
+    Karmanalik ijodkorlar
 {% endblock %}
 {% block header %}
     <header id="header" class="fixed-top d-flex align-items-center">
@@ -13,7 +13,7 @@
                 <ul>
                     <li><a class="nav-link scrollto " href="{% url 'index' %}">Asosiy oyna</a></li>
                     <li><a class="nav-link scrollto" href="{% url 'index' %}#about">Kutubxona haqida</a></li>
-                    <li class="dropdown"><a href="#"><span>Xizmatlar</span> <i
+                    <li class="dropdown"><a href="#" class="active"><span>Xizmatlar</span> <i
                             class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="{% url 'writers' %}">Karmanalik ijodkorlar</a></li>
@@ -22,8 +22,8 @@
                             <li><a href="#">Xizmatlar 4</a></li>
                             <li><a href="#">Xizmatlar 5</a></li>
                         </ul>
-                    <li><a class="nav-link scrollto " href="{% url 'index' %}#portfolio">Kitoblar</a></li>
-                    <li><a class="nav-link scrollto active" href="{% url 'events' %}">Tadbirlar</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'index' %}#portfolio">Kitoblar</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'events' %}">Tadbirlar</a></li>
                     <li><a class="nav-link scrollto" href="{% url 'index' %}#contact">Aloqa</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -40,9 +40,9 @@
 
                 <ol>
                     <li><a href="{% url 'index' %}">Asosiy oyna</a></li>
-                    <li>Tadbirlar</li>
+                    <li>Karmanalik ijodkorlar</li>
                 </ol>
-                <h2>Tadbirlar</h2>
+                <h2>Karmanalik ijodkorlar</h2>
 
             </div>
         </section><!-- End Breadcrumbs -->
@@ -54,8 +54,39 @@
                 <div class="row">
 
                     <div class="col-lg-8 entries">
-                        <div id="article">
-                            <!-- Article list -->
+                        <div id="writers">
+                            <!-- Writers list -->
+                            {% for writer in writers %}
+                                <article class="entry">
+                                    <div class="entry-img">
+                                        <img src="{{ writer.image.first }}" alt="{{ writer.name }}"
+                                             class="img-fluid">
+                                    </div>
+
+                                    <h2 class="entry-title">
+                                        <a href="blog-single.html">{{ writer.name }}</a>
+                                    </h2>
+
+                                    <div class="entry-meta">
+                                        <ul>
+                                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
+                                                    href="blog-single.html">{{ writer.created_by }}</a></li>
+                                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
+                                                    href="blog-single.html">
+                                                <time datetime={{ writer.created_at }}>{{ writer.created_at }}</time>
+                                            </a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="entry-content">
+                                        {{ writer.description|safe|slice:":300" }}...
+                                        <div class="read-more">
+                                            <a href="{% url 'writers-detail' writer.slug %}">Batafsil</a>
+                                        </div>
+                                    </div>
+
+                                </article><!-- End blog entry -->
+                            {% endfor %}
                         </div>
                         <div class="blog-pagination">
                             <ul class="justify-content-center" id="pagination">
@@ -127,6 +158,6 @@
     </main><!-- End #main -->
 {% endblock %}
 {% block js %}
-    <script src="{% static 'js/events.js' %}"></script>
     {{ block.super }}
+    <script src="{% static 'js/writers.js' %}"></script>
 {% endblock %}

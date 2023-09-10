@@ -1,0 +1,160 @@
+{% extends 'Presento/base.html' %}
+{% load static %}
+{% block title %}
+    Karmanalik ijodkorlar
+{% endblock %}
+{% block header %}
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center">
+            <h1 class="logo me-auto"><a href="{% url 'index' %}">
+                <img src="{% static 'icons/icon.ico' %}" alt="Logo">
+                Karmana bibliografiya</a></h1>
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="nav-link scrollto " href="{% url 'index' %}">Asosiy oyna</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'index' %}#about">Kutubxona haqida</a></li>
+                    <li class="dropdown"><a href="#" class="active"><span>Xizmatlar</span> <i
+                            class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="{% url 'writers' %}">Karmanalik ijodkorlar</a></li>
+                            <li><a href="#">Toponimlar</a></li>
+                            <li><a href="#">Xizmatlar 3</a></li>
+                            <li><a href="#">Xizmatlar 4</a></li>
+                            <li><a href="#">Xizmatlar 5</a></li>
+                        </ul>
+                    <li><a class="nav-link scrollto" href="{% url 'index' %}#portfolio">Kitoblar</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'events' %}">Tadbirlar</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'index' %}#contact">Aloqa</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+            <a href="{% url 'index' %}" class="get-started-btn scrollto">Boshlash</a>
+        </div>
+    </header>
+{% endblock %}
+{% block main %}
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="{% url 'index' %}">Asosiy oyna</a></li>
+                    <li><a href="{% url 'writers' %}"> Karmanalik ijodkorlar</a></li>
+                </ol>
+                <h2>{{ writer.name }}</h2>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+
+        <!-- ======= Blog Section ======= -->
+        <section id="blog" class="blog">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row">
+                    <section id="blog" class="blog">
+                        <div class="container" data-aos="fade-up">
+
+                            <div class="row">
+
+                                <div class="col-lg-8 entries">
+
+                                    <article class="entry entry-single">
+
+                                        <div class="entry-img">
+                                            <img src="{{ writer.image.first }}" alt="{{ writer.slug }}"
+                                                 class="img-fluid">
+                                        </div>
+
+                                        <h2 class="entry-title">
+                                            <a href="blog-single.html">{{ writer.name }}</a>
+                                        </h2>
+
+                                        <div class="entry-content">
+                                            {{ writer.description|safe }}
+                                        </div>
+
+                                        <div class="entry-footer">
+                                            <i class="bi bi-person"></i>
+                                            <ul class="cats">
+                                                <li><a href="#">{{ writer.created_by }}</a></li>
+                                            </ul>
+                                            <i class="bi bi-clock">
+                                                <a href="#">{{ writer.created_at }}</a>
+                                            </i>
+                                        </div>
+
+                                    </article><!-- End blog entry -->
+                                    <a href="/writers/" type="button" class="btn btn-primary">Ortga</a>
+
+                                </div><!-- End blog entries list -->
+
+                                <div class="col-lg-4">
+
+                                    <div class="sidebar">
+
+                                        <h3 class="sidebar-title">Qidiruv</h3>
+                                        <div class="sidebar-item search-form">
+                                            <form action="#">
+                                                <input type="text" id="event-search">
+                                                <button type="submit"><i class="bi bi-search"
+                                                                         id="event-search-button"></i></button>
+                                            </form>
+                                        </div><!-- End sidebar search formn-->
+                                        <div class="sidebar-item categories">
+                                            <ul id="categories"></ul>
+                                        </div><!-- End sidebar categories-->
+
+                                        <h3 class="sidebar-title">Recent Posts</h3>
+                                        <div class="sidebar-item recent-posts">
+                                            <div class="post-item clearfix">
+                                                <img src="{% static 'assets/img/blog/blog-recent-1.jpg' %}" alt="">
+                                                <h4><a href="blog-single.html">Nihil blanditiis at in nihil autem</a>
+                                                </h4>
+                                                <time datetime="2020-01-01">Jan 1, 2020</time>
+                                            </div>
+
+                                            <div class="post-item clearfix">
+                                                <img src="{% static 'assets/img/blog/blog-recent-2.jpg' %}" alt="">
+                                                <h4><a href="blog-single.html">Quidem autem et impedit</a></h4>
+                                                <time datetime="2020-01-01">Jan 1, 2020</time>
+                                            </div>
+
+                                            <div class="post-item clearfix">
+                                                <img src="{% static 'assets/img/blog/blog-recent-3.jpg' %}" alt="">
+                                                <h4><a href="blog-single.html">Id quia et et ut maxime similique
+                                                    occaecati ut</a>
+                                                </h4>
+                                                <time datetime="2020-01-01">Jan 1, 2020</time>
+                                            </div>
+
+                                            <div class="post-item clearfix">
+                                                <img src="{% static 'assets/img/blog/blog-recent-4.jpg' %}" alt="">
+                                                <h4><a href="blog-single.html">Laborum corporis quo dara net para</a>
+                                                </h4>
+                                                <time datetime="2020-01-01">Jan 1, 2020</time>
+                                            </div>
+
+                                            <div class="post-item clearfix">
+                                                <img src="{% static 'assets/img/blog/blog-recent-5.jpg' %}" alt="">
+                                                <h4><a href="blog-single.html">Et dolores corrupti quae illo quod
+                                                    dolor</a></h4>
+                                                <time datetime="2020-01-01">Jan 1, 2020</time>
+                                            </div>
+
+                                        </div><!-- End sidebar recent posts-->
+
+                                    </div><!-- End sidebar -->
+
+                                </div><!-- End blog sidebar -->
+
+                            </div>
+
+                        </div>
+                    </section><!-- End Blog Section -->
+
+    </main><!-- End #main -->
+{% endblock %}
+{% block js %}
+    {{ block.super }}
+    <script src="{% static 'js/writers.js' %}"></script>
+{% endblock %}

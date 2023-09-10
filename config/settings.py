@@ -52,6 +52,8 @@ LOCAL_APPS = [
     'apps.books',
     'apps.events',
     'apps.msg',
+    'apps.writers',
+    'apps.toponym',
 ]
 
 THIRD_APP = [
@@ -301,7 +303,6 @@ JAZZMIN_SETTINGS = {
 
 # -----------------------------------------Ckeditor-----------------------------------------
 CKEDITOR_UPLOAD_PATH = "ckeditor/"
-
 
 try:
     from .local_settings import *
