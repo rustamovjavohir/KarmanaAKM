@@ -12,6 +12,7 @@ CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
 urlpatterns = [
     path('', cache_page(CACHE_TTL)(IndexView.as_view()), name='index'),  # cache_page(CACHE_TTL)(index)
+    # path('', IndexView.as_view(), name='index'),  # cache_page(CACHE_TTL)(index)
     path('events/', EventsView.as_view(), name='events'),
     path('events/<int:pk>/', EventDetailView.as_view(), name='event-detail'),
     path('writers/', WritersView.as_view(), name='writers'),
