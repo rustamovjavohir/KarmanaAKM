@@ -1,7 +1,7 @@
 {% extends 'Presento/base.html' %}
 {% load static %}
 {% block title %}
-    Karmanalik ijodkorlar
+    Toponimlar
 {% endblock %}
 {% block header %}
     <header id="header" class="fixed-top d-flex align-items-center">
@@ -36,9 +36,9 @@
             <div class="container">
                 <ol>
                     <li><a href="{% url 'index' %}">Asosiy oyna</a></li>
-                    <li><a href="{% url 'writers' %}"> Karmanalik ijodkorlar</a></li>
+                    <li><a href="{% url 'toponyms' %}"> Toponimlar</a></li>
                 </ol>
-                <h2>{{ writer.name }}</h2>
+                <h2>{{ toponym.name }}</h2>
 
             </div>
         </section><!-- End Breadcrumbs -->
@@ -58,30 +58,30 @@
                                     <article class="entry entry-single">
 
                                         <div class="entry-img">
-                                            <img src="{{ writer.image.first }}" alt="{{ writer.slug }}"
+                                            <img src="{{ toponym.image.first }}" alt="{{ toponym.slug }}"
                                                  class="img-fluid">
                                         </div>
 
                                         <h2 class="entry-title">
-                                            <a href="blog-single.html">{{ writer.name }}</a>
+                                            <a href="blog-single.html">{{ toponym.name }}</a>
                                         </h2>
 
                                         <div class="entry-content">
-                                            {{ writer.description|safe }}
+                                            {{ toponym.description|safe }}
                                         </div>
 
                                         <div class="entry-footer">
                                             <i class="bi bi-person"></i>
                                             <ul class="cats">
-                                                <li><a href="#">{{ writer.created_by }}</a></li>
+                                                <li><a href="#">{{ toponym.created_by }}</a></li>
                                             </ul>
                                             <i class="bi bi-clock">
-                                                <a href="#">{{ writer.created_at }}</a>
+                                                <a href="#">{{ toponym.created_at }}</a>
                                             </i>
                                         </div>
 
                                     </article><!-- End blog entry -->
-                                    <a href="/writers/" type="button" class="btn btn-primary">Ortga</a>
+                                    <a href="/toponyms/" type="button" class="btn btn-primary">Ortga</a>
 
                                 </div><!-- End blog entries list -->
 
@@ -149,12 +149,13 @@
                         </div>
                     </section><!-- End Blog Section -->
 
+
                 </div>
             </div>
-        </section><!-- End Writers Section -->
+        </section><!-- End Toponyms Section -->
     </main><!-- End #main -->
 {% endblock %}
 {% block js %}
     {{ block.super }}
-    <script src="{% static 'js/writers.js' %}"></script>
+    <script src="{% static 'js/toponyms.js' %}"></script>
 {% endblock %}

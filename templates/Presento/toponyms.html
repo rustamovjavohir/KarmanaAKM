@@ -37,9 +37,9 @@
 
                 <ol>
                     <li><a href="{% url 'index' %}">Asosiy oyna</a></li>
-                    <li>Karmanalik ijodkorlar</li>
+                    <li>Toponimlar</li>
                 </ol>
-                <h2>Karmanalik ijodkorlar</h2>
+                <h2>Toponimlar</h2>
 
             </div>
         </section><!-- End Breadcrumbs -->
@@ -51,38 +51,38 @@
                 <div class="row">
 
                     <div class="col-lg-8 entries">
-                        <div id="writers">
-                            <!-- Writers list -->
-                            {% for writer in writers %}
+                        <div id="toponyms">
+                            <!-- toponym list -->
+                            {% for toponym in toponyms %}
                                 <article class="entry">
                                     <div class="entry-img">
-                                        <img src="{{ writer.image.first }}" alt="{{ writer.name }}"
+                                        <img src="{{ toponym.image.first }}" alt="{{ toponym.name }}"
                                              class="img-fluid">
                                     </div>
 
                                     <h2 class="entry-title">
-                                        <a href="blog-single.html">{{ writer.name }}</a>
+                                        <a href="blog-single.html">{{ toponym.name }}</a>
                                     </h2>
 
                                     <div class="entry-meta">
                                         <ul>
                                             <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                                    href="blog-single.html">{{ writer.created_by }}</a></li>
+                                                    href="blog-single.html">{{ toponym.created_by }}</a></li>
                                             <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
                                                     href="blog-single.html">
-                                                <time datetime={{ writer.created_at }}>{{ writer.created_at }}</time>
+                                                <time datetime={{ toponym.created_at }}>{{ toponym.created_at }}</time>
                                             </a></li>
                                         </ul>
                                     </div>
 
                                     <div class="entry-content">
-                                        {{ writer.description|safe|slice:":300" }}...
+                                        {{ toponym.description|safe|slice:":300" }}...
                                         <div class="read-more">
-                                            <a href="{% url 'writers-detail' writer.slug %}">Batafsil</a>
+                                            <a href="{% url 'toponyms-detail' toponym.slug %}">Batafsil</a>
                                         </div>
                                     </div>
 
-                                </article><!-- End blog entry -->
+                                </article><!-- End Toponym entry -->
                             {% endfor %}
                         </div>
                         <div class="blog-pagination">
@@ -156,5 +156,5 @@
 {% endblock %}
 {% block js %}
     {{ block.super }}
-    <script src="{% static 'js/writers.js' %}"></script>
+    <script src="{% static 'js/toponyms.js' %}"></script>
 {% endblock %}

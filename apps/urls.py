@@ -5,6 +5,7 @@ from django.views.decorators.cache import cache_page
 from apps.views import IndexView, BaseView, index
 from apps.events.views import EventsView, EventDetailView
 from apps.writers.views import WritersView, WritersDetailView
+from apps.toponym.views import ToponymListView, ToponymDetailView
 from config import settings
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
@@ -15,5 +16,7 @@ urlpatterns = [
     path('events/<int:pk>/', EventDetailView.as_view(), name='event-detail'),
     path('writers/', WritersView.as_view(), name='writers'),
     path('writers/<slug:slug>/', WritersDetailView.as_view(), name='writers-detail'),
+    path('toponyms/', ToponymListView.as_view(), name='toponyms'),
+    path('toponyms/<slug:slug>/', ToponymDetailView.as_view(), name='toponyms-detail'),
     path('base/', BaseView.as_view(), name='base'),
 ]
