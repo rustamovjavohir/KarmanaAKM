@@ -32,5 +32,5 @@ class Events(SlugModel):
         return self.name
 
     class Meta:
-        verbose_name = 'Событие'
-        verbose_name_plural = 'События'
+        verbose_name = 'Tadbir'
+        verbose_name_plural = 'Tadbirlar'

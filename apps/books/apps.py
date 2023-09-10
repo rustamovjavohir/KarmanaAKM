@@ -4,4 +4,4 @@ from django.apps import AppConfig
 class BooksConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'apps.books'
-    verbose_name = 'Книги и авторы'
+    verbose_name = 'Kitoblar va mualliflar'

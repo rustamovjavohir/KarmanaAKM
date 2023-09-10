@@ -67,8 +67,8 @@ class User(AbstractUser, PermissionsMixin):
         return self.username
 
     class Meta:
-        verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователи'
+        verbose_name = 'Foydalanuvchi'
+        verbose_name_plural = 'Foydalanuvchilar'
 
     objects = UserManager()
 
@@ -77,15 +77,15 @@ class UserRole(models.Model):
     user = models.ForeignKey(User,
                              on_delete=models.CASCADE,
                              related_name='user_roles',
-                             verbose_name='Пользователь')
+                             verbose_name='Foydalanuvchi')
     role = models.CharField(max_length=26,
                             choices=UserRoleChoices.choices,
                             default=UserRoleChoices.READER,
-                            verbose_name='Роли пользователей')
+                            verbose_name='Roli')
 
     class Meta:
-        verbose_name = 'Роль пользователя'
-        verbose_name_plural = 'Роли пользователей'
+        verbose_name = 'Foydalanuvchi roli'
+        verbose_name_plural = 'Foydalanuvchi rollari'
         ordering = ('-id',)
 
     def __str__(self):
@@ -104,12 +104,12 @@ class UserReader(models.Model):
     user = models.OneToOneField(User,
                                 on_delete=models.CASCADE,
                                 related_name='user_reader',
-                                verbose_name='Пользователь')
+                                verbose_name='Foydalanuvchi')
     address = models.CharField(max_length=255,
-                               verbose_name='Адрес',
+                               verbose_name='Manzil',
                                null=True, blank=True)
     passport = models.CharField(max_length=9,
-                                verbose_name='Паспорт',
+                                verbose_name='Pasport raqami',
                                 unique=True,
                                 validators=[validate_passport])
     registration = models.CharField(max_length=255,
@@ -117,8 +117,8 @@ class UserReader(models.Model):
                                     blank=True, null=True)
 
     class Meta:
-        verbose_name = 'Читатель'
-        verbose_name_plural = 'Читатели'
+        verbose_name = 'O\'quvchi'
+        verbose_name_plural = 'O\'quvchilar'
         ordering = ('id',)
 
     def __str__(self):

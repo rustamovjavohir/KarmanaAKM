@@ -5,13 +5,13 @@ from utils.models import SlugModel, BaseModel
 
 
 class Image(BaseModel):
-    name = models.CharField(max_length=255, null=True, blank=True, verbose_name='Название')
-    image = models.ImageField(upload_to='images', verbose_name='Изображение')
-    is_main = models.BooleanField(default=False, verbose_name='Главное?')
+    name = models.CharField(max_length=255, null=True, blank=True, verbose_name='Nomi')
+    image = models.ImageField(upload_to='images', verbose_name='Rasmi')
+    is_main = models.BooleanField(default=False, verbose_name='Asosiymi?')
 
     class Meta:
-        verbose_name = 'Изображение'
-        verbose_name_plural = 'Изображения'
+        verbose_name = 'Rasm'
+        verbose_name_plural = 'Rasmlar'
 
     def __str__(self):
         return self.image.url
@@ -43,8 +43,8 @@ class Author(SlugModel):
                                    verbose_name='Изображение')
 
     class Meta:
-        verbose_name = 'Автор'
-        verbose_name_plural = 'Авторы'
+        verbose_name = 'Muallif'
+        verbose_name_plural = 'Mualliflar'
 
     def __str__(self):
         return self.name
@@ -68,8 +68,8 @@ class Category(SlugModel):
         return self.name
 
     class Meta:
-        verbose_name = 'Категория'
-        verbose_name_plural = 'Категории'
+        verbose_name = 'Kategoriya'
+        verbose_name_plural = 'Kategoriyalar'
 
 
 class Book(SlugModel):
@@ -95,3 +95,7 @@ class Book(SlugModel):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = 'Kitob'
+        verbose_name_plural = 'Kitoblar'
