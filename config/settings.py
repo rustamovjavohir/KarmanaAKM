@@ -308,6 +308,9 @@ JAZZMIN_SETTINGS = {
 
 # -----------------------------------------Ckeditor-----------------------------------------
 CKEDITOR_UPLOAD_PATH = "ckeditor/"
+# -------------------------------------------MONITORING-------------------------------------------
+APIIP_KEY = env.str("APIIP_KEY")
+APIIP_URL = env.str("APIIP_URL")
 
 try:
     from .local_settings import *

@@ -7,8 +7,6 @@ class VisitorMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        # Log visitor activity here
-        # Example: Create a Visit record in your database
         Visitors.objects.update_or_create(ip_address=self.get_client_ip(request),
                                           defaults={
                                               'user_agent': request.META.get('HTTP_USER_AGENT'),
