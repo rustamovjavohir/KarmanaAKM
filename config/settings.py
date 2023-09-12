@@ -54,6 +54,7 @@ LOCAL_APPS = [
     'apps.msg',
     'apps.writers',
     'apps.toponym',
+    'apps.monitoring',
 ]
 
 THIRD_APP = [
@@ -76,6 +77,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'utils.middlewares.VisitorMiddleware',  # monitoring middleware
 ]
 
 ROOT_URLCONF = 'config.urls'
