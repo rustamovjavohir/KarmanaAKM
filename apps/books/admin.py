@@ -28,6 +28,7 @@ class AdminAuthor(admin.ModelAdmin):
     search_fields = ('name', 'slug')
     list_filter = ('name', 'slug')
     fields = ('name', 'slug', 'image')
+    readonly_fields = ('slug',)
 
     def get_image(self, obj):
         return obj.image.image.url
@@ -40,6 +41,7 @@ class AdminCategory(admin.ModelAdmin):
     list_display = ('name', 'slug')
     search_fields = ('name', 'slug')
     list_filter = ('name', 'slug')
+    readonly_fields = ('slug',)
 
     def get_image(self, obj):
         return obj.image.image.url
@@ -53,3 +55,4 @@ class AdminBook(admin.ModelAdmin):
     search_fields = ('name',)
     list_filter = ('name', 'author', 'category')
     fields = ('name', 'slug', 'image', 'author', 'category', 'description')
+    readonly_fields = ('slug',)
