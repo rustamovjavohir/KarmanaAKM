@@ -1,5 +1,6 @@
 from django.contrib import admin
 from apps.books.models import Book, Author, Category, Image
+from config import settings
 
 
 # Register your models here.
@@ -7,7 +8,7 @@ from apps.books.models import Book, Author, Category, Image
 
 @admin.register(Image)
 class AdminImage(admin.ModelAdmin):
-    list_display = ('name', 'image', 'is_main')
+    list_display = ('name', 'image', 'image_full_path', 'is_main')
     search_fields = ('name', 'is_main')
     list_filter = ('name', 'is_main')
 
@@ -20,6 +21,11 @@ class AdminImage(admin.ModelAdmin):
         return obj.author.name
 
     get_author.short_description = 'Автор'
+
+    def image_full_path(self, obj):
+        return f"{settings.HOST}{obj.image.url}"
+
+    image_full_path.short_description = 'rasm manzili (url)'
 
 
 @admin.register(Author)
