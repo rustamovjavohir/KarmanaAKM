@@ -56,3 +56,4 @@ class AdminBook(admin.ModelAdmin):
     list_filter = ('name', 'author', 'category')
     fields = ('name', 'slug', 'image', 'author', 'category', 'description')
     readonly_fields = ('slug',)
+# new test comment
