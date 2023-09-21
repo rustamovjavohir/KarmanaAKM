@@ -1,4 +1,4 @@
-name: KarmanaAKM CI
+name: KarmanaAKM CI/CD
 
 on:
   push:
