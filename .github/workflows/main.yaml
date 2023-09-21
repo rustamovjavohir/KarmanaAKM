@@ -41,7 +41,7 @@ jobs:
       - name: Tests
         run: python manage.py test
   deploy:
-    needs: [build]
+    needs: [ build ]
     runs-on: ubuntu-latest
     steps:
       - name: Upload to server
@@ -54,4 +54,8 @@ jobs:
           script: |
             cd ${{ secrets.PATH }}
             git pull origin master
+            source venv/bin/activate
+          run: |
+            python manage.py makemigrations
+            python manage.py migrate
             sudo systemctl restart gunicorn
