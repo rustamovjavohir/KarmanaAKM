@@ -57,5 +57,5 @@ class Visitors(BaseModel):
         return self.ip_address
 
     class Meta:
-        verbose_name = 'Tashrif buyurgan'
-        verbose_name_plural = 'Tashrif buyurganlar'
+        verbose_name = 'Monitoring'
+        verbose_name_plural = 'Monitoring'
