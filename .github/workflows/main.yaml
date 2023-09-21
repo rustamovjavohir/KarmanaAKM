@@ -55,7 +55,6 @@ jobs:
             cd ${{ secrets.PATH }}
             git pull origin master
             source venv/bin/activate
-          run: |
             python manage.py makemigrations
             python manage.py migrate
             sudo systemctl restart gunicorn
