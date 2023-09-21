@@ -10,47 +10,34 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: [3.9]
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1.3
-      with:
-        envkey_DEBUG: false
-        envkey_SOME_API_KEY: "123456abcdef"
-        envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        envkey_ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
-        envkey_DB_NAME: ${{ secrets.DB_NAME }}
-        envkey_DB_USER: ${{ secrets.DB_USER }}
-        envkey_DB_PASS: ${{ secrets.DB_PASS }}
-        envkey_DB_SERVICE: ${{ secrets.DB_SERVICE }}
-        envkey_DB_PORT: ${{ secrets.DB_PORT }}
-        envkey_HOST: ${{ secrets.HOST }}
-        envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        envkey_TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        envkey_TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        envkey_GMAIL: ${{ secrets.GMAIL }}
-        envkey_GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
-        envkey_APIIP_KEY: ${{ secrets.APIIP_KEY }}
-        envkey_APIIP_URL: ${{ secrets.APIIP_URL }}
-        some_other_variable: foobar
-        file_name: .env
-        fail_on_empty: false
-    - name: Install Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r ./requirements/requirements.txt
-    - uses: harmon758/postgresql-action@v1
-      with:
-        postgresql version: '11'
-    - name: Run Tests
-      run: |
-        python manage.py test
+      - uses: actions/checkout@master
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+          architecture: 'x64'
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_DEBUG: false
+          envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          envkey_ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
+          envkey_GMAIL: ${{ secrets.GMAIL }}
+          envkey_GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+          envkey_APIIP_KEY: ${{ secrets.APIIP_KEY }}
+          envkey_APIIP_URL: ${{ secrets.APIIP_URL }}
+          envkey_HOST: ${{ secrets.HOST }}
+          envkey_TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          envkey_TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          envkey_DB_NAME: ${{ secrets.DB_NAME }}
+          envkey_DB_USER: ${{ secrets.DB_USER }}
+          envkey_DB_PASS: ${{ secrets.DB_PASS }}
+          envkey_DB_SERVICE: ${{ secrets.DB_SERVICE }}
+          envkey_DB_PORT: ${{ secrets.DB_PORT }}
+          file_name: .env
+          fail_on_empty: false
+      - name: Install requirements
+        run: pip install -r ./requirements/requirements.txt
+      - name: Tests
+        run: python manage.py test
