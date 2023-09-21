@@ -16,7 +16,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: | # /home/javohir/KarmanaAKM/
+          script: | 
             cd ${{ secrets.PATH }}
             git pull origin master
             sudo systemctl restart gunicorn
