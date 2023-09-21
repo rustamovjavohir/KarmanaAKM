@@ -18,5 +18,5 @@ jobs:
           port: ${{ secrets.PORT }}
           script: | # /home/javohir/KarmanaAKM/
             cd ${{ secrets.PATH }}
-            git pull
+            git pull origin master
             sudo systemctl restart gunicorn
