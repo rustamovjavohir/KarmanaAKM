@@ -1,0 +1,58 @@
+version: "3.8"
+
+
+services:
+  web:
+    restart: always
+    build: .
+    expose:
+      - "8000"
+    networks:
+      - main # docker network create main
+    volumes:
+      - web-django:/usr/src/KarmanaAKM
+      - web-static:/usr/src/KarmanaAKM/static
+    env_file: .env
+    environment:
+      DEBUG: 'true'
+    depends_on:
+      - postgres
+    command: ./start-django
+
+  postgres:
+    restart: always
+    image: postgres:latest
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+    networks:
+      - main
+
+
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - "80:80"
+    volumes:
+      - web-static:/usr/src/KarmanaAKM/static
+      - nginx-static:/usr/src/KarmanaAKM/static
+    networks:
+      - main
+    depends_on:
+      - web
+
+volumes:
+  pgdata:
+  web-django:
+  web-static:
+  nginx-static:
+
+networks:
+  main: { }
