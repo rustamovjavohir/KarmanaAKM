@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.db.models import QuerySet
+
 from apps.monitoring.models import Visitors
 
 
@@ -9,8 +11,10 @@ class VisitorsAdmin(admin.ModelAdmin):
     actions = ('get_extra_datas',)
     ordering = ('-updated_at',)
 
-    def get_extra_datas(self, queryset):
-        for obj in queryset:
-            obj.fill_data()
+    def get_extra_datas(self, queryset, *args, **kwargs):
+        for obj in args:
+            if isinstance(obj, QuerySet):
+                for item in obj:
+                    item.fill_data()
 
     get_extra_datas.short_description = 'Дополнительные данные'
