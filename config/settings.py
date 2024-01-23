@@ -30,7 +30,7 @@ SECRET_KEY = env.str('SECRET_KEY')
 DEBUG = env.bool("DEBUG", default=False)
 # ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://radius.bibliografiya.uz', 'https://bibliografiya.uz']
 TELEGRAM_CHAT_ID = env.str("TELEGRAM_CHAT_ID")
 TELEGRAM_BOT_TOKEN = env.str("TELEGRAM_BOT_TOKEN")
 HOST = env.str("HOST")
