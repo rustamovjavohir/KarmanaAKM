@@ -46,6 +46,7 @@ DEFAULT_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_api_logger',  # Add here
 ]
 
 LOCAL_APPS = [
@@ -80,9 +81,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'utils.middlewares.VisitorMiddleware',  # monitoring middleware
+    'drf_api_logger.middleware.api_logger_middleware.APILoggerMiddleware',  # Add here
 ]
 
 ROOT_URLCONF = 'config.urls'
+DRF_API_LOGGER_DATABASE = True  # Default to False
 
 TEMPLATES = [
     {
