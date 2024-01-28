@@ -5,7 +5,7 @@ from apps.toponym.models import Toponym
 
 class ToponymListView(ListView):
     model = Toponym
-    queryset = Toponym.objects.filter(is_active=True)
+    queryset = Toponym.objects.filter(is_active=True).order_by('-created_at')
     template_name = 'Presento/toponyms.html'
     context_object_name = 'toponyms'
     paginate_by = 10
