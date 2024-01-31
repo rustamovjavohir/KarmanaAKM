@@ -66,3 +66,4 @@ virtualenv==20.14.1
 virtualenv-clone==0.5.7
 wcwidth==0.2.6
 webencodings==0.5.1
+whitenoise==6.6.0
