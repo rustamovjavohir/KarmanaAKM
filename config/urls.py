@@ -23,7 +23,7 @@ from config import settings
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('api/', include('api.urls')),
-                  path('', include('apps.urls'))
+                  path('', include('apps.urls')),
                   re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
                   re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
