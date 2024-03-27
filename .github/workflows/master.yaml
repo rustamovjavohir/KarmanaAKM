@@ -45,14 +45,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Upload to server
-        uses: easingthemes/ssh-deploy@main
+        uses: appleboy/ssh-action@v1.0.3
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.HOST }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
-          REMOTE_PORT: ${{ secrets.PORT }}
-          TARGET: "/home/javohir/KarmanaAKM/"
-          SCRIPT_AFTER: |
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
             cd ${{ secrets.PATH }}
             git pull origin master
             source venv/bin/activate
