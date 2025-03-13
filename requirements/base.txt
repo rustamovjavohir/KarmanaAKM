@@ -29,7 +29,6 @@ drf_api_logger==1.1.15
 environs==9.5.0
 face-recognition-models==0.3.0
 filelock==3.6.0
-gunicorn==20.1.0
 idna==3.4
 jsonmerge==1.8.0
 jsonschema==4.5.1

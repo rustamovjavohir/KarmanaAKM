@@ -28,7 +28,6 @@ SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
-# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://radius.bibliografiya.uz', 'https://bibliografiya.uz']
 TELEGRAM_CHAT_ID = env.str("TELEGRAM_CHAT_ID")
@@ -110,8 +109,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {'default': env.dj_db_url('DATABASE_URL')}
-
+# DATABASES = {'default': env.dj_db_url('DATABASE_URL')}
+DATABASES = {
+    "default": {
+        'ENGINE': 'django.db.backends.postgresql',
+        "HOST": env.str("POSTGRES_HOST"),
+        "NAME": env.str("POSTGRES_DB"),
+        "USER": env.str("POSTGRES_USER"),
+        "PASSWORD": env.str("POSTGRES_PASSWORD"),
+        "PORT": env.str("POSTGRES_PORT"),
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
